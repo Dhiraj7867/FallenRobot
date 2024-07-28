@@ -73,8 +73,9 @@ COPY ./FallenRobot/config.py ./FallenRobot/config.py* /root/FallenRobot/FallenRo
 
 ENV PATH="/home/bot/bin:$PATH"
 
-# Install requirements
-RUN pip3 install --no-cache-dir --upgrade --requirement requirements.txt
+# Log requirements and install requirements
+RUN cat requirements.txt && \
+    pip3 install --no-cache-dir --upgrade --requirement requirements.txt
 
 # Starting Worker
 CMD ["python3","-m","FallenRobot"]
